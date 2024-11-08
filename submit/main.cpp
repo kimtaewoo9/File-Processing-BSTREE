@@ -261,13 +261,13 @@ int main(){
     while(cin >> command >> key){
         if(command == 'i'){
             if(insertBST(&root,int(key)) == false){
-                printf("i %d:The key already exists\n", key);
+                printf("i %d: The key already exists\n", key);
                 continue;
             }
         }
         else if(command == 'd'){
             if(deleteBST(&root, int(key)) == false){
-                printf("d %d:The key does not exist\n", key);
+                printf("d %d: The key does not exist\n", key);
                 continue;
             }
         }
