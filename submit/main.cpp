@@ -231,11 +231,11 @@ void inorderTraverse(TREENODE* node){
     if(node == NULL){
         return;
     }
-    cout << "< ";
+    cout << "<";
     inorderTraverse(node->left);
-    printf("%d", node->key);
+    printf(" %d ", node->key);
     inorderTraverse(node->right);
-    cout << " >";
+    cout << ">";
 }
 
 // clear 는 .. 후위순회로 클리어 해야함
