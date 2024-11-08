@@ -260,7 +260,7 @@ int main(){
 
     TREENODE* root = NULL;
 
-    while(cin >> command >> key;){
+    while(cin >> command >> key){
         if(command == 'i'){
             if(insertBST(&root,int(key)) == false){
                 printf("i %d:The key already exists\n", key);
