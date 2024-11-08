@@ -3,6 +3,9 @@
 
 using namespace std;
 
+// 메모리 누수x -> 후위 순회로 메모리 해제해야함.
+//
+
 typedef int element;
 
 typedef struct _TREENODE_{
@@ -257,9 +260,7 @@ int main(){
 
     TREENODE* root = NULL;
 
-    while(1){
-        cin >> command >> key;
-
+    while(cin >> command >> key;){
         if(command == 'i'){
             if(insertBST(&root,int(key)) == false){
                 printf("i %d:The key already exists\n", key);
