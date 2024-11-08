@@ -172,7 +172,6 @@ bool deleteBST(TREENODE** root, element deleteKey){
 
             temp->key = p->key;
             temp = p; // 후계자를 temp에 넣고 삭제
-            p = NULL;
         }else{
             // 왼쪽 트리에서 가장 큰 노드를 후계자로 선택하는 경우
             // 높이가 왼쪽이 높거나, 높이는 같은데 사이즈가 왼쪽이 큰 경우
@@ -194,7 +193,6 @@ bool deleteBST(TREENODE** root, element deleteKey){
 
             temp->key = p->key;
             temp = p;
-            p = NULL;
         }
     }
 
@@ -233,11 +231,11 @@ void inorderTraverse(TREENODE* node){
     if(node == NULL){
         return;
     }
-    cout << "<";
+    cout << "< ";
     inorderTraverse(node->left);
     printf("%d", node->key);
     inorderTraverse(node->right);
-    cout << ">";
+    cout << " >";
 }
 
 // clear 는 .. 후위순회로 클리어 해야함
@@ -285,5 +283,5 @@ int main(){
     // 프로그램 종료 전, 메모리 누수가 발생하지 않도록 할당받은 메모리를 반드시 해제해야 합니다.
     clearTree(root);
 
-    return 0;
+    return (0);
 }
