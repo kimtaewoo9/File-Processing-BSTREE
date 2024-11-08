@@ -1,0 +1,52 @@
+name: Main workflow
+
+on:
+    push:
+        paths:
+            - "submit/main.c"
+            - "submit/main.cpp"
+    workflow_dispatch:
+        inputs:
+            project:
+                description: "Project to test"
+                required: true
+                default: "__bstree"
+                type: choice
+                options:
+                    - "__bstree"
+                    - "__avltree"
+                    - "__btree"
+
+env:
+    DEFAULT_PROJECT: "__bstree"
+
+jobs:
+    test:
+        runs-on: macos-14
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Set configuration
+              run: |
+                  ./grademe.sh
+                  sed -i '' 's|^PATH_SUBMIT=.*|PATH_SUBMIT="${PWD}/submit"|' my_config.sh
+                  sed -i '' 's|^PATH_DEEPTHOUGHT=.*|PATH_DEEPTHOUGHT="${PWD}/result"|' my_config.sh
+
+            - name: Set project
+              run: echo PROJECT=${{ github.event.inputs.project || env.DEFAULT_PROJECT }} >> my_config.sh
+
+            - name: Install dependencies
+              run: brew install coreutils
+
+            - name: Select xcode version
+              run: sudo xcode-select -s /Library/Developer/CommandLineTools
+
+            - name: Run test
+              run: bash grademe.sh
+
+            - name: Upload deepthought
+              uses: actions/upload-artifact@v3
+              with:
+                  name: deepthought
+                  path: result/deepthought
