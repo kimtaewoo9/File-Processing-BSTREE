@@ -459,9 +459,11 @@ bool deleteAVL(TREENODE** root, int deleteKey){
         }
 
         // temp에 저장해뒀던 삭제할 노드를 delete함.
-        delete temp;
     }
 
+    delete p;
+    p = nullptr;
+    
     while(!stack.empty()){
         q = stack.top(); stack.pop();
         // q->left, q->right가 NULL인 경우 예외처리
