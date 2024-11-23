@@ -10,7 +10,7 @@ on:
             project:
                 description: "Project to test"
                 required: true
-                default: "__avltree"
+                default: "__bstree"
                 type: choice
                 options:
                     - "__bstree"
@@ -18,7 +18,7 @@ on:
                     - "__btree"
 
 env:
-    DEFAULT_PROJECT: "__avltree"
+    DEFAULT_PROJECT: "__bstree"
 
 jobs:
     test:
